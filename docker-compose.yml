@@ -1,0 +1,31 @@
+version: '3.3'
+services:
+  mongo:
+    image: mongo
+    container_name: "db-cari"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_DATABASE: db-cari
+    volumes:
+      - './dockervolume/mongodb:/data/db'
+    ports:
+      - 27017:27017
+
+  app:
+    container_name: 'service-cari'
+    image: devkotakjualan/service-cari
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3080:3080'
+    depends_on:
+      - 'mongo'
+
+networks:
+  WServiceRejectNetwork:
+    driver: bridge
+
+
+
+

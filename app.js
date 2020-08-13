@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cariRoutes = require('./API/routes/cari');
 
 app.use(bp.json());
-mongoose.connect('mongodb://localhost:27017/CariDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://mongo-indo1:27017/CariDB', { useNewUrlParser: true, useUnifiedTopology: true });
 app.use('/cari', cariRoutes);
 
 module.exports = app;
